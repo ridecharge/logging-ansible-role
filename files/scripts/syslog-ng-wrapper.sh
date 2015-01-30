@@ -10,4 +10,4 @@ TAG=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 sudo sed -i "s/TOKEN/$TOKEN/" /etc/syslog-ng/conf.d/22-loggly.conf
 sudo sed -i "s/TAG/$TAG/" /etc/syslog-ng/conf.d/22-loggly.conf
 
-sudo exec /usr/sbin/syslog-ng -F --no-caps
+exec sudo /usr/sbin/syslog-ng -F --no-caps
