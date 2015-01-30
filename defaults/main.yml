@@ -3,5 +3,6 @@
 logging_packages: 
 - syslog-ng
 - logrotate
+- curl
 
 logging_mode: host
