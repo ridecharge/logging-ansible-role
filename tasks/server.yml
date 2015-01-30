@@ -6,4 +6,4 @@
   copy: src=scripts/syslog-ng-wrapper.sh dest=/tmp/syslog-ng-wrapper.sh mode=0500
 
 - name: make sure system() is disabled inside docker
-  replace: dest={{ logging_etc_path }}/syslog-ng/syslog-ng.conf regexp='system();' replace='\#system();'
+  replace: dest={{ logging_etc_path }}/syslog-ng/syslog-ng.conf regexp="system();" replace="#system();"
