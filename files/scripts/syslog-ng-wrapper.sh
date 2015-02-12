@@ -4,7 +4,8 @@ if [ -z "$LOGGLY_TOKEN" ]; then
   echo "Missing \$LOGGLY_TOKEN"
   exit 1
 fi
-if [ -z "$TAG" ]
+
+if [ -z "$TAG" ]; then
 	TAG=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 fi
 
