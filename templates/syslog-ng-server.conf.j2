@@ -6,18 +6,13 @@ template LogglyFormat { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID}
 template_escape(no);
 };
 
-
 destination d_loggly {
     tcp("logs-01.loggly.com" port(6514)
     tls(peer-verify(required-untrusted) ca_dir('{{ logging_etc_path }}/syslog-ng/keys/ca.d/'))
     template(LogglyFormat));
 };
 
-destination d_stdout {
-	file("/dev/stdout");
-};
-
 log { 
 	source(s_host); 
-	destination(d_stdout);
+	destination(d_loggly);
 };
