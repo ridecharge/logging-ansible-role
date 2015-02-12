@@ -1,5 +1,5 @@
 destination d_local {
-	syslog("0.0.0.0" transport("tcp") port(514));
+	syslog("0.0.0.0" transport("udp") port(514));
 };
 
 log { 
