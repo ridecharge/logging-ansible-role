@@ -13,7 +13,12 @@ destination d_loggly {
     template(LogglyFormat));
 };
 
+destination d_stdout {
+	file("/dev/stdout");
+};
+
 log { 
 	source(s_host); 
+	destination(d_stdout);
 	destination(d_loggly); 
 };
