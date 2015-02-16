@@ -5,17 +5,16 @@ if [ -z "$LOGGLY_TOKEN" ]; then
   exit 1
 fi
 
-if [ -z "$CF_ENV" ]; then
-	CF_ENV="local"
+if [ -z "$ENVIRONMENT" ]; then
+  ENVIRONMENT="local"
 fi
 
-if [ -z "$TAG" ]; then
-	TAG=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+if [ -z "$INSTANCE_ID" ]; then
+  INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 fi
-
-TAG=$TAG,$CF_ENV
 
 sed -i "s/LOGGLY_TOKEN/$LOGGLY_TOKEN/g" /etc/syslog-ng/conf.d/22-loggly.conf
-sed -i "s/TAG/$TAG/g" /etc/syslog-ng/conf.d/22-loggly.conf
+sed -i "s/INSTANCE_ID/$INSTANCE_ID/g" /etc/syslog-ng/conf.d/22-loggly.conf
+sed -i "s/ENVIRONMENT/$ENVIRONMENT/g" /etc/syslog-ng/conf.d/22-loggly.conf
 cat /etc/syslog-ng/conf.d/22-loggly.conf
 exec /usr/sbin/syslog-ng -F --no-caps

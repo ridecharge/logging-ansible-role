@@ -2,7 +2,7 @@ source s_host {
 	udp(ip("0.0.0.0") port(514));
 };
 
-template LogglyFormat { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} ${MSGID} [LOGGLY_TOKEN@41058 tag=\"TAG\"] $MSG\n");
+template LogglyFormat { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} ${MSGID} [LOGGLY_TOKEN@41058 tag=\"INSTANCE_ID\" tag=\"ENVIRONMENT\"] $MSG\n");
 template_escape(no);
 };
 
